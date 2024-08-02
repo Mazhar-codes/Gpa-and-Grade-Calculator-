@@ -1,0 +1,138 @@
+#include<iostream>
+using namespace std;
+struct menu
+{
+	char cname[10];
+	int crdh,gp,crdtp,total=0,tcrdh=0;
+	float gpa;
+	char grade;
+	float marks;
+	char name[10];
+}s;
+struct stu
+{
+	menu course[6];
+	char sname;
+	char semester;
+	float sgpa;
+}b[3];
+
+void input(stu [])
+{
+		for(int i=0;i<1;i++)
+	{
+	cout<<" enter name of "<<i+1<<" student : ";
+	gets(b[i].course[i].name);
+	cout<<endl<<" enter marks of "<<i+1<<" student with course name :"<<endl;
+		for(int j=0;j<2;j++)
+		{
+			cout<<j+1<<" course name : ";
+			cin.ignore();
+			gets(b[i].course[j].cname);
+			
+			cout<<"marks of "<<i+1<<" student :";
+			cin>>b[i].course[j].marks;
+			
+			cout<<" enter credit hours of "<<j+1<<" course :";
+			cin>>b[i].course[j].crdh;
+		}
+	}
+}
+
+void grade(stu [])
+{
+	for(int i=0;i<2;i++)
+	{
+		for(int j=0;j<6;j++)
+		
+	
+			if(b[i].course[j].marks==90)
+	{
+	
+	     b[i].course[j].grade='A';
+		b[i].course[j].gpa=4.0;		
+	}
+	else if(b[i].course[j].marks>=86&&b[i].course[j].marks<90)
+	{
+	
+         b[i].course[j].grade='A-';
+		b[i].course[j].gpa=3.67;
+	}
+		else if(b[i].course[j].marks>76&&b[i].course[j].marks<86)
+	{
+	
+        b[i].course[j].grade='B+';
+		b[i].course[j].gpa=3.33;
+	}
+		else if(b[i].course[j].marks>=76&&b[i].course[j].marks<81)
+	{
+	
+        b[i].course[j].grade='B';
+		b[i].course[j].gpa=3.0;
+	}
+		else if(b[i].course[j].marks>=71&&b[i].course[j].marks<76)
+	{
+	
+        b[i].course[j].grade='B-';
+		b[i].course[j].gpa=2.67;
+	}
+		else if(b[i].course[j].marks>=66&&b[i].course[j].marks<71)
+	{
+	
+	    b[i].course[j].grade='C+';
+		b[i].course[j].gpa=2.33;
+	}
+		else if(b[i].course[j].marks>=61&&b[i].course[j].marks<66)
+	{
+	
+        b[i].course[j].grade='C';
+		b[i].course[j].gpa=2.00;
+	}
+		else if(b[i].course[j].marks>=56&&b[i].course[j].marks<61)
+	{
+	
+        b[i].course[j].grade='C-';
+		b[i].course[j].gpa=1.67;
+	}
+		else if(b[i].course[j].marks>=50&&b[i].course[j].marks<56)
+	{
+	
+         b[i].course[j].grade='D+';
+		b[i].course[j].gpa=1.33;
+	}
+		else if(b[i].course[j].marks>=46&&b[i].course[j].marks<50)
+	{
+	
+        b[i].course[j].grade='D';
+		b[i].course[j].gpa=1.00;
+	}
+		else 
+	{
+	
+	    b[i].course[j].grade='F';
+		b[i].course[j].gpa=0.00;
+	}
+}
+}
+void display(stu [])
+{
+	for(int i=0;i<1;i++)
+	{
+		cout<<"NAME OF STUDENT : "<<b[i].course[i].name<<endl;
+		for(int j=0;j<2;j++)
+		{
+			cout<<"MARKS OF THE STUDENT : "<<b[i].course[j].marks<<endl;
+			cout<<"GPA OF THE STUDENT   : "<<b[i].course[j].gpa<<endl;
+			cout<<"CREDIT HOURS OF THE STUDENT : "<<b[i].course[j].crdh<<endl;
+			cout<<"GRADE OF THE STUDENT : "<<b[i].course[j].grade;
+			cout<<endl<<endl;
+		}
+	}
+}
+
+int main()
+{
+input(b);
+grade(b);
+display(b);
+}
